@@ -5,7 +5,7 @@
   background-size: cover;
   background-position: center;
   display: grid;
-  grid-template-rows: 1fr ;
+  grid-template-rows: 1fr min-content min-content 1fr 3rem 8rem ;
   grid-template-columns: max-content;
   padding-top: 4rem;
   justify-content: center;
