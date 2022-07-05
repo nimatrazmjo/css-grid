@@ -14,6 +14,12 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
 
+// RESPONSIVE BREAKPOINTS
+$breakpoint-sm: 32rem; // 513/16 = 37.5rem
+$breakpoint-md: 50rem; // 800/16 = 48rem
+$breakpoint-lg: 62rem; //992px/16 = 62rem 
+$breakpoint-xl: 75rem; // This is the breakpoint for the desktop 1200/16 = 75rem
+
 *,
 *::before,
 *::after {
@@ -26,7 +32,12 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; // 10px / 16px = 62.5% -> 1rem = 10px
 
-}
+  @media only screen and (max-width: $breakpoint-xl) {
+    font-size: 50%; // 10px / 14px = 56.25% -> 1rem = 8px
+  }
+    
+  }
+
 
 body {
   font-family: $font-primary;
@@ -44,6 +55,16 @@ body {
   display: grid;
   grid-template-rows: 80vh min-content 40vw  repeat(3,min-content);
   grid-template-columns:[sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start]repeat(8, [col-start] minmax(min-content,14rem) [col-end]) [center-end] minmax(6rem, 1fr)  [full-end];
+
+  @media only screen and (max-width: $breakpoint-lg) {
+    grid-template-rows: 10rem 80vh min-content 40vw  repeat(3,min-content);
+    grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start]repeat(8, [col-start] minmax(min-content,14rem) [col-end]) [center-end] minmax(6rem, 1fr)  [full-end];
+  }
+
+  @media only screen and (max-width: $breakpoint-md) {
+    // grid-template-rows: 10rem calc(100vh - 10rem) min-content min-content min-content  repeat(3,min-content);
+    grid-template-rows: 10rem calc(100vh - 10rem); // no need to min-content, it is going to be handled in implicit grid
+  }
   & > * {
     padding: 40px;
     font-size: 3rem;
